@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import {withStyles, WithStyles, Grid} from '@material-ui/core';
+import styles from "./styles/app.styles";
 import './App.css';
 
-function App() {
+interface AppProps extends WithStyles<typeof styles> {
+
+};
+
+const App:React.FC<AppProps> = ({classes}) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.app}>
+      <Grid container>
+        <Grid xs={12} item className={classes.header}>
+          Header
+        </Grid>
+        <Grid xs={12}item className={classes.main}>
+          Main Tamagochi interface current tamagochi
+        </Grid>
+        <Grid xs={12}item className={classes.footer}>
+          Footer that displays all tamagochi you had
+        </Grid>
+      </Grid>
     </div>
   );
 }
 
-export default App;
+export default withStyles(styles)(App);
